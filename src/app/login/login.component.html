@@ -1,1 +1,22 @@
-<p>login works!</p>
+<div class="login-form">
+    <mat-card class="loginPanel">
+      <mat-card-title class="loginTitle">Sign In</mat-card-title>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="loginInputEmail">
+          <input matInput placeholder="E-mail" formControlName="email" required>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="loginInputPw">
+          <input matInput placeholder="Password"
+            [type]="hide ? 'password' : 'text'" formControlName="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card>
+</div>

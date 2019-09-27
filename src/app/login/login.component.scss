@@ -1,0 +1,15 @@
+.login-form {
+  margin:0 auto;
+  width: 500px;
+  .loginPanel {
+    text-align: center;
+    .loginTitle {
+      font-weight: bolder;
+      font-size: 2em;
+    }
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}
