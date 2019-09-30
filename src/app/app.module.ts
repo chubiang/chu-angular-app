@@ -12,18 +12,19 @@ import { MatButtonModule,
          MatSelectModule,
          MatFormFieldModule,
          MatSliderModule } from '@angular/material';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
+import { SuccessDialog } from './dialog/success-dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
-
+    SuccessDialog,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,11 @@ import { LoginComponent } from './login/login.component';
     MatIconModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    SuccessDialog,
   ],
   providers: [],
   bootstrap: [AppComponent]
