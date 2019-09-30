@@ -1,0 +1,12 @@
+.wrap-container {
+    padding: 20px 70px 0;
+    display: block;
+    text-align: center;
+    .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        max-width: 940px;
+        margin: 0 auto;
+    }
+}

@@ -1,9 +1,11 @@
+@import '../style-variabel.scss';
+
 .login-form {
-  margin:0 auto;
-  width: 500px;
+  width: 100%;
   .loginPanel {
     text-align: center;
     .loginTitle {
+      color: $deepPurple-color;
       font-weight: bolder;
       font-size: 2em;
     }

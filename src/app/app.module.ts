@@ -11,13 +11,17 @@ import { MatButtonModule,
          MatCheckboxModule,
          MatSelectModule,
          MatFormFieldModule,
-         MatSliderModule } from '@angular/material';
+         MatSliderModule,
+         MatButtonToggleModule,
+         MatMenuModule,
+         MatSidenavModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessDialog } from './dialog/success-dialog';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,7 @@ import { SuccessDialog } from './dialog/success-dialog';
     MainComponent,
     LoginComponent,
     SuccessDialog,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import { SuccessDialog } from './dialog/success-dialog';
     MatCheckboxModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatMenuModule,
+    MatSidenavModule
   ],
   entryComponents: [
     SuccessDialog,
