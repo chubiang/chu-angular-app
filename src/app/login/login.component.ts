@@ -1,30 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormGroupDirective, FormControl, NgForm, Validators } from '@angular/forms';
-import { MyErrorStateMatcherService } from '../services/my-error-state-matcher.service'
+import { FormBuilder, Validators } from '@angular/forms';
+import { MsgFormValidationService } from '../services/msg-form-validation.service'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [MyErrorStateMatcherService]
+  providers: [MsgFormValidationService]
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
-  });
 
-  getErrorMessage() {
-    console.log(this.errorStateMatcherService.isErrorState);
-    if (this.loginForm.get('email').invalid) {
-      return 'Email Required!';
-    }
+  loginForm: any;
+
+  inputArr = ['email', 'password'];
+
+  getErrorMessage(type: string): string {
+    let msg: string;
+    this.inputArr.forEach(e => {
+      if (type === e) {
+        console.log('type', type);
+
+        msg = this.msgFormValidationService.getValidMessage(this.loginForm.get(type).errors, type);
+      }
+    });
+    return msg;
   }
   onSubmit() {
     console.warn(this.loginForm.value);
   }
 
-  constructor(private errorStateMatcherService: MyErrorStateMatcherService) { }
+  constructor(private msgFormValidationService: MsgFormValidationService,
+              private formBuilder: FormBuilder) {
+    this.loginForm = formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
   }
