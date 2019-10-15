@@ -1,5 +1,5 @@
 import { SubTitleService } from './services/sub-title.service';
-import { Component, OnChanges , Input, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class AppComponent implements OnDestroy {
 
-  @Input() menuTitle: any;
+  menuTitle: string;
   subscription: Subscription;
 
   constructor(private breakpointObserver: BreakpointObserver, private subTitleService: SubTitleService) {
