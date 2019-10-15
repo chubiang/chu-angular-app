@@ -1,0 +1,34 @@
+<div class="board">
+  <mat-list>
+    <mat-list-item *ngFor="let list of data; let x = index;">
+      <div *ngFor="let col of columns; let y = index;">
+        <div *ngIf="col.style" [ngStyle]="col.style.cell">
+          <div *ngIf="!listIcon" [ngClass]="{ 'no-content': !listIcon? true: false }">
+            <mat-icon matListIcon class="mat-18">{{listIcon}}</mat-icon>
+          </div>
+          <span matLine
+              [ngStyle]="col.style.content">
+                {{list[col.name]}}
+          </span>
+          <span *ngIf="col.style.subContent" matLine
+                [ngStyle]="col.style.subContent">
+            {{list[col.subContent]}}
+          </span>
+        </div>
+        <div *ngIf="col.styleClass" [ngClass]="col.styleClass.cell">
+            <div *ngIf="!listIcon" [ngClass]="{ 'no-content': !listIcon? true: false }">
+              <mat-icon matListIcon class="mat-18">{{listIcon}}</mat-icon>
+            </div>
+            <div matLine
+                [ngClass]="col.styleClass.content">
+              {{list[col.name]}}
+            </div>
+            <span *ngIf="col.styleClass.subContent" matLine
+                  [ngClass]="col.styleClass.subContent">
+              {{list[col.subContent]}}
+            </span>
+          </div>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

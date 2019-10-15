@@ -17,8 +17,9 @@ export class NavbarComponent {
 
   constructor() {}
 
-  menus: Array<menu> = [{title: 'Sign In', herf: 'login'},
-                        {title: 'Main', herf: 'main'}];
+
+  menus: Array<menu> = [{ title: 'Sign In', herf: 'login' },
+                        { title: 'Main', herf: 'main' }];
 
   // tslint:disable-next-line: no-output-rename
   @Output() menuTitle: EventEmitter<string> = new EventEmitter<string>();

@@ -26,6 +26,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './header/header.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
     SuccessDialog,
     NavbarComponent,
     HeaderComponent,
+    BoardComponent,
   ],
   imports: [
     BrowserModule,
