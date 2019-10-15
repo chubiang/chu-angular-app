@@ -1,23 +1,13 @@
 @import '~@angular/material/theming';
 @import '../style-variabel.scss';
 
-app-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
+.mat-toolbar {
+  background-color: $amber-color;
+  color: $deepPurple-color;
 }
-.wrap-nav {
-    background-color: $amber-color;
-    color: $deepPurple-color;
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    padding: 8px 16px;
-    margin-bottom: 20px;
-    @include mat-elevation-transition;
-    @include mat-elevation(6);
 
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }

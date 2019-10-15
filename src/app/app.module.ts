@@ -22,6 +22,10 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { SuccessDialog } from './dialog/success-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     SuccessDialog,
     NavbarComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatDialogModule,
     MatButtonToggleModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatListModule
   ],
   entryComponents: [
     SuccessDialog,

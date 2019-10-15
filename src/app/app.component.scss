@@ -1,12 +1,41 @@
+@import '~@angular/material/theming';
+@import './style-variabel.scss';
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  @include mat-elevation-transition;
+  @include mat-elevation(4);
+}
+
+.wrap-nav {
+    background-color: $deepPurple-color;
+    color: $amber-color;
+    margin-bottom: 20px;
+    @include mat-elevation-transition;
+    @include mat-elevation(4);
+
+}
+
 .wrap-container {
-    padding: 20px 70px 0;
-    display: block;
-    text-align: center;
-    .container {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        max-width: 940px;
-        margin: 0 auto;
-    }
+  padding: 20px 70px 0;
+  display: flex;
+  text-align: center;
+  .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 0 auto;
+  }
+}
+
+.subTitle {
+  background-color: $sub-background-color;
+  color: $sub-font-color;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 2px 70px;
 }

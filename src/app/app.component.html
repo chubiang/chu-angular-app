@@ -1,10 +1,27 @@
-<app-navbar></app-navbar>
-<mat-sidenav-container class="wrap-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-                (closed)="events.push('close!')">
-    Sidenav content
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <app-navbar (menuTitle)="changeTitle($event)"></app-navbar>
   </mat-sidenav>
-  <mat-sidenav-content class="container">
-    <router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <mat-toolbar class="wrap-nav">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>chu-angular-app</span>
+    </mat-toolbar>
+    <span class="subTitle">{{menuTitle}}</span>
+    <main class="wrap-container">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>
