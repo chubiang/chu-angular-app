@@ -1,0 +1,28 @@
+@import '../../style-variabel.scss';
+
+.list-header {
+  background-color: $amber-color;
+  color: $deepPurple-color;
+  display: flex;
+  padding:16px;
+  font-weight: bold;
+}
+mat-list {
+  padding-top: 0;
+  .no-content {
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+  mat-list-item {
+    background-color: #ffffff;
+    border-color: #e4e4e4;
+    border-width: 0px;
+    border-style: ridge;
+    border-bottom-width: 1px;
+    &:nth-child(1) {
+      border-top-width: 1px;
+    }
+  }
+}

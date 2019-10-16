@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
 
 import { MsgFormValidationService } from '../services/msg-form-validation.service'
-import { SuccessDialog } from '../dialog/success-dialog';
+import { SuccessDialogComponent } from '../component/dialog/success-dialog.component';
 
 @Component({
-  selector: 'app-login',
+  selector: 'page-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   providers: [MsgFormValidationService]
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(SuccessDialog, {
+    const dialogRef = this.dialog.open(SuccessDialogComponent, {
       width: '250px',
       data: this.dlg
     });

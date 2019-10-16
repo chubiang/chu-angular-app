@@ -3,7 +3,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <app-navbar (menuTitle)="changeTitle($event)"></app-navbar>
+    <mpc-navbar (mpeMenuTitle)="changeTitle($event)"></mpc-navbar>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar class="wrap-nav">
