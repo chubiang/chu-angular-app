@@ -1,4 +1,4 @@
-import { MenuService } from './component/navbar/shared/menu.service';
+import { MenuService } from './navbar/shared/menu.service';
 import { Component, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';

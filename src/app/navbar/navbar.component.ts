@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
 import { Menu } from './shared/navbar.model';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 
 export const Menus: Array<Menu> = [{ title: 'Sign In', herf: 'login' },
                         { title: 'Main', herf: 'main' }];

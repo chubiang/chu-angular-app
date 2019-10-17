@@ -1,5 +1,5 @@
 import { MOCK_LIST_DATA, MOCK_LIST_COLUMN } from './shared/mock-list';
-import { Column } from '../component/list/shared/list.model';
+import { Column } from '../shared/list/shared/list.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

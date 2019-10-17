@@ -16,36 +16,30 @@ import { MatButtonModule,
          MatMenuModule,
          MatSidenavModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
-import { SuccessDialogComponent } from './component/dialog/success-dialog.component';
-import { NavbarComponent } from './component/navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { ListComponent } from './component/list/list.component';
-import { BoardFooterComponent } from './component/board-footer/board-footer.component';
-import { TableComponent } from './component/table/table.component';
+import { SharedModule } from './shared/shared.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
-    SuccessDialogComponent,
-    NavbarComponent,
-    ListComponent,
-    BoardFooterComponent,
-    TableComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
+    SharedModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -68,7 +62,6 @@ import { TableComponent } from './component/table/table.component';
     MatListModule
   ],
   entryComponents: [
-    SuccessDialogComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

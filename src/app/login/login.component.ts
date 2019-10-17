@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
-import { MsgFormValidationService } from '../services/msg-form-validation.service'
-import { SuccessDialogComponent } from '../component/dialog/success-dialog.component';
+import { MsgFormValidationService } from '../shared/msg-form-validation.service'
+import { SuccessDialogComponent } from '../shared/dialog/success-dialog.component';
+import { LoginForm } from './login.model';
 
 @Component({
   selector: 'page-login',
@@ -13,7 +14,7 @@ import { SuccessDialogComponent } from '../component/dialog/success-dialog.compo
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  data: object;
+  data: LoginForm;
   loginForm: any;
 
   inputArr = ['email', 'password'];
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.warn(this.loginForm.value);
     this.data = this.loginForm.value;
-    if (this.data) {
+    if (this.data && this.data.email && this.data.password) {
       this.openDialog();
     }
   }
