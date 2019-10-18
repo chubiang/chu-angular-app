@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { PageEvent } from '@angular/material';
 import { Paginator } from './shared/board-footer.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'mpc-board-footer',
@@ -9,12 +9,11 @@ import { Paginator } from './shared/board-footer.model';
 })
 export class BoardFooterComponent implements OnInit {
 
-  @Input() page: Paginator;
-  pageEvent: PageEvent;
-
-  constructor() {}
+  @Input('paginator') paginator: Paginator;
+  @Output() mpePageEvent: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   ngOnInit() {
+
   }
 
 }

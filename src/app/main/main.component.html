@@ -1,5 +1,9 @@
 <div class="main-page">
   <h4>List Component</h4>
   <mpc-list [data]="data" [columns]="columns" [header]="true"></mpc-list>
+  <mpc-board-footer [paginator]="paginator" (mpePageEvent)="setDataOfPageIndex($event)"></mpc-board-footer>
+  <div class="wrapBtn">
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+  </div>
 </div>
 

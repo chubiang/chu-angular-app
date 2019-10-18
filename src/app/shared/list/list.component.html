@@ -13,7 +13,7 @@
           </div>
           <span matLine
               [ngStyle]="col.style.content">
-                {{onFilterData(list[col.name], col.filter, col.format)}}
+                {{filter(list[col.name], col.filter, col.format)}}
           </span>
           <span *ngIf="col.style.subContent" matLine
                 [ngStyle]="col.style.subContent">
@@ -26,7 +26,7 @@
             </div>
             <div matLine
                 [ngClass]="col.styleClass.content">
-              {{onFilterData(list[col.name])}}
+                {{filter(list[col.name], col.filter, col.format)}}
             </div>
             <span *ngIf="col.styleClass.subContent" matLine
                   [ngClass]="col.styleClass.subContent">

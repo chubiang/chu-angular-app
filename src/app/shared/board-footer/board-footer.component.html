@@ -1,5 +1,8 @@
-<mat-paginator [length]="page.length"
-  [pageSize]="page.pageSize"
-  [pageSizeOptions]="page.pageSizeOptions"
-  (page)="pageEvent = $event">
-</mat-paginator>
+<div class="boardFooter">
+  <mat-paginator [length]="paginator.length"
+    [pageSize]="paginator.pageSize"
+    [pageSizeOptions]="paginator.pageSizeOptions"
+    [pageIndex]="paginator.pageIndex"
+    (page)="mpePageEvent.emit($event)">
+  </mat-paginator>
+</div>
