@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
   }
 
   filter(data: any, filter: string, format?: string, local: string = `en-US`) {
-    return this.listService.onFilterData(data, filter, format);
+    return this.listService.onFormatData(data, filter, format);
   }
 
   ngOnInit(): void { }

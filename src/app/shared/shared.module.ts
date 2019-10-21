@@ -1,3 +1,4 @@
+import { DataFormatPipe } from './data-format.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,7 +55,8 @@ import { TableComponent } from './table/table.component';
     SuccessDialogComponent,
     ListComponent,
     TableComponent,
-    BoardFooterComponent
+    BoardFooterComponent,
+    DataFormatPipe
   ],
   imports: [
     BrowserModule,

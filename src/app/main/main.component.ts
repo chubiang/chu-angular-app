@@ -1,9 +1,10 @@
+import { TableColumn } from './../shared/data-format.model';
 import { ListService } from './../shared/list/shared/list.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material';
 import { PaginatorService } from './../shared/board-footer/shared/paginator.service';
 import { Paginator, DEF_PAGE_SIZE, DEF_PAGE_SIZE_OPTIONS } from './../shared/board-footer/shared/board-footer.model';
-import { MOCK_LIST_DATA, MOCK_LIST_COLUMN } from './shared/mock-list';
+import { MOCK_LIST_DATA, MOCK_LIST_COLUMN, MOCK_TABLE_COLUMN, MOCK_TABLE_COLUMN_PIPE } from './shared/mock-list';
 import { Column } from '../shared/list/shared/list.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,10 +15,15 @@ import { Component, OnInit } from '@angular/core';
   providers: [PaginatorService]
 })
 export class MainComponent implements OnInit {
-
+  // list
   data: Array<any>;
   original: Array<any>;
   columns: Array<Column>;
+  // table
+  tblData: Array<any>;
+  tblColumns: string[];
+  tblPipe: Array<TableColumn>;
+
   paginator: Paginator;
   listService: ListService;
   paginatorService: PaginatorService;
@@ -28,18 +34,12 @@ export class MainComponent implements OnInit {
     this.listService = listService;
   }
 
-  setListData(data: Array<any>) {
-    this.listService.setListData(data);
-  }
-
   setDataOfPageIndex(pageEvent: PageEvent) {
-    this.paginator.pageSize = this.paginator.length;
     this.paginatorService.setDataOfPageIndex(pageEvent, this.original);
     this.putDataOnList();
   }
 
   onSearch() {
-    this.paginator.pageSize = this.paginator.length;
     this.paginatorService.initData(this.paginator, this.original);
     this.putDataOnList();
   }
@@ -58,6 +58,9 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.original = MOCK_LIST_DATA;
     this.columns = MOCK_LIST_COLUMN;
+    this.tblData = MOCK_LIST_DATA;
+    this.tblColumns = MOCK_TABLE_COLUMN;
+    this.tblPipe = MOCK_TABLE_COLUMN_PIPE;
     this.paginator = {
       pageIndex: 0,
       length: MOCK_LIST_DATA.length,

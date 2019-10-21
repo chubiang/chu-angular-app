@@ -1,8 +1,7 @@
-<div class="boardFooter">
-  <mat-paginator [length]="paginator.length"
-    [pageSize]="paginator.pageSize"
-    [pageSizeOptions]="paginator.pageSizeOptions"
-    [pageIndex]="paginator.pageIndex"
-    (page)="mpePageEvent.emit($event)">
-  </mat-paginator>
-</div>
+<mat-paginator [length]="paginator.length"
+  [pageSize]="paginator.pageSize"
+  [pageSizeOptions]="paginator.pageSizeOptions"
+  [pageIndex]="paginator.pageIndex"
+  (page)="mpePageEvent.emit($event)" showFirstLastButtons>
+</mat-paginator>
+

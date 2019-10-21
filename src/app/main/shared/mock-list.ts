@@ -21,3 +21,20 @@ export const MOCK_LIST_DATA = [
   { username: 'sophia', email: 'sop@email.com', age: 27, cash: 3000000, lastSignIn: new Date('2019-08-21') },
   { username: 'quartz', email: 'qrz@email.com', age: 29, cash: 10000000, lastSignIn: new Date('2019-09-25') }
 ];
+
+export const MOCK_TABLE_COLUMN = [
+  'username',
+  'email',
+  'age',
+  'cash',
+  'lastSignIn'
+];
+
+
+export const MOCK_TABLE_COLUMN_PIPE = [
+  { name: 'username' },
+  { name: 'email' },
+  { name: 'age' },
+  { name: 'cash', pipe: { type: 'number' } },
+  { name: 'lastSignIn', displayName: 'last sign in', pipe: { type: 'date', format: 'yyyy/MM/dd', local: `en-US` } }
+];
