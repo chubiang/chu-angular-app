@@ -3,8 +3,8 @@ import { DataFormatPipe } from './../data-format.pipe';
 import { isNumeric } from 'rxjs/util/isNumeric';
 import { TableColumn, TableFooterColumn, DataFormatPipeModel } from './../data-format.model';
 import { TableService } from './shared/table.service';
-import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
-import { MatTableDataSource, MatSort, PageEvent } from '@angular/material';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
 
@@ -20,6 +20,7 @@ export class TableComponent implements OnInit {
   @Input() tblColumns: string[];
   @Input() tblPipe: Array<TableColumn>;
   @Input() tblFooter: Array<TableFooterColumn>;
+  @Input() tblSelect: boolean;
   @Input() tblPageSize: number[];
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -30,6 +31,13 @@ export class TableComponent implements OnInit {
   dataFormatPipe: DataFormatPipe;
 
   dataSource = new MatTableDataSource<any>();
+
+  @Output() mpeDataSource: EventEmitter<MatTableDataSource<any>> =
+    new EventEmitter<MatTableDataSource<any>>();
+
+  // TODO: 선택한 값 무엇인지 내보내기
+  @Output() mpeSelectedRows: EventEmitter<any>;
+
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -79,6 +87,12 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
+    // select 활성화 시에
+    if (this.tblSelect) {
+      this.tblColumns.unshift('select');
+      this.tblPipe.unshift({name: 'select'});
+    }
+    this.mpeDataSource.emit(this.dataSource);
     this.dataSource.data = this.tblData;
     this.dataSource.paginator = this.matPaginator;
     this.dataSource.sort = this.sort;

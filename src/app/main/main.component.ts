@@ -1,7 +1,7 @@
 import { TableColumn, TableFooterColumn } from './../shared/data-format.model';
 import { ListService } from './../shared/list/shared/list.service';
 import { Subscription } from 'rxjs';
-import { PageEvent } from '@angular/material';
+import { PageEvent, MatTableDataSource } from '@angular/material';
 import { PaginatorService } from './../shared/board-footer/shared/paginator.service';
 import { Paginator, DEF_PAGE_SIZE, DEF_PAGE_SIZE_OPTIONS } from './../shared/board-footer/shared/board-footer.model';
 import { MOCK_LIST_DATA, MOCK_LIST_COLUMN, MOCK_TABLE_COLUMN, MOCK_TABLE_COLUMN_PIPE, MOCK_TABLE_COLUMN_FOOTER } from './shared/mock-list';
@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
   tblPipe: Array<TableColumn>;
   tblFooter: Array<TableFooterColumn>;
   tblPageSize: number[];
+  dataSource: MatTableDataSource<any>;
 
   paginator: Paginator;
   listService: ListService;
@@ -56,6 +57,11 @@ export class MainComponent implements OnInit {
         this.data = v;
       }
     });
+  }
+
+  getTableDataSource(dataSource: MatTableDataSource<any>) {
+    this.dataSource = dataSource;
+
   }
 
   ngOnInit() {

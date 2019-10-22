@@ -1,18 +1,23 @@
 @import '../../style-variabel.scss';
 
-table {
+.mat-table {
   width: 100%;
 }
+
 .mat-header-cell {
   text-align: center;
   background-color: $amber-color;
   color: $deepPurple-color;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
 }
 ::ng-deep .mat-sort-header-container {
   justify-content:center;
 }
 .mat-footer-cell {
   font-weight: bold;
+}
+
+.mat-column-select {
+  overflow: initial;
 }
