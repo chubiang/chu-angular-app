@@ -7,7 +7,7 @@ import { Column } from './shared/list.model';
   selector: 'mpc-list',
   styleUrls: ['./list.component.scss'],
   templateUrl: './list.component.html',
-  providers: [ListService, PaginatorService]
+  providers: [ListService]
 })
 export class ListComponent implements OnInit {
 
@@ -17,7 +17,6 @@ export class ListComponent implements OnInit {
   @Input() header: boolean;
 
   listService: ListService;
-  paginatorService: PaginatorService;
 
   constructor(listService: ListService) {
     this.listService = listService;

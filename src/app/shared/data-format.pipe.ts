@@ -8,7 +8,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class DataFormatPipe implements PipeTransform {
   transform(data: any, dataFormat: DataFormatPipeModel): any {
-    console.log(data, dataFormat);
     if(!dataFormat.local) {
       dataFormat.local = `en_US`;
     }

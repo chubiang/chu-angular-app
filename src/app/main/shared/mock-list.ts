@@ -38,3 +38,5 @@ export const MOCK_TABLE_COLUMN_PIPE = [
   { name: 'cash', pipe: { type: 'number' } },
   { name: 'lastSignIn', displayName: 'last sign in', pipe: { type: 'date', format: 'yyyy/MM/dd', local: `en-US` } }
 ];
+
+export const MOCK_TABLE_COLUMN_FOOTER = [{ name: 'cash', pipe: { type: 'number' } },];

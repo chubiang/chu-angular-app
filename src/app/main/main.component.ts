@@ -1,10 +1,10 @@
-import { TableColumn } from './../shared/data-format.model';
+import { TableColumn, TableFooterColumn } from './../shared/data-format.model';
 import { ListService } from './../shared/list/shared/list.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material';
 import { PaginatorService } from './../shared/board-footer/shared/paginator.service';
 import { Paginator, DEF_PAGE_SIZE, DEF_PAGE_SIZE_OPTIONS } from './../shared/board-footer/shared/board-footer.model';
-import { MOCK_LIST_DATA, MOCK_LIST_COLUMN, MOCK_TABLE_COLUMN, MOCK_TABLE_COLUMN_PIPE } from './shared/mock-list';
+import { MOCK_LIST_DATA, MOCK_LIST_COLUMN, MOCK_TABLE_COLUMN, MOCK_TABLE_COLUMN_PIPE, MOCK_TABLE_COLUMN_FOOTER } from './shared/mock-list';
 import { Column } from '../shared/list/shared/list.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,15 +19,18 @@ export class MainComponent implements OnInit {
   data: Array<any>;
   original: Array<any>;
   columns: Array<Column>;
-  // table
+    // table
   tblData: Array<any>;
   tblColumns: string[];
   tblPipe: Array<TableColumn>;
+  tblFooter: Array<TableFooterColumn>;
+  tblPageSize: number[];
 
   paginator: Paginator;
   listService: ListService;
   paginatorService: PaginatorService;
   subscription: Subscription;
+  subscription2: Subscription;
 
   constructor(listService: ListService, paginatorService: PaginatorService) {
     this.paginatorService = paginatorService;
@@ -59,8 +62,10 @@ export class MainComponent implements OnInit {
     this.original = MOCK_LIST_DATA;
     this.columns = MOCK_LIST_COLUMN;
     this.tblData = MOCK_LIST_DATA;
+    this.tblFooter = MOCK_TABLE_COLUMN_FOOTER;
     this.tblColumns = MOCK_TABLE_COLUMN;
     this.tblPipe = MOCK_TABLE_COLUMN_PIPE;
+    this.tblPageSize = [5, 10, 20, 100];
     this.paginator = {
       pageIndex: 0,
       length: MOCK_LIST_DATA.length,

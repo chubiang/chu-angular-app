@@ -2,9 +2,10 @@
   <section>
     <article>
       <h4>1. List & Paginator</h4>
-
-      <mpc-list [data]="data" [columns]="columns" [header]="true"></mpc-list>
-      <mpc-board-footer [paginator]="paginator" (mpePageEvent)="setDataOfPageIndex($event)"></mpc-board-footer>
+      <div class="mat-elevation-z8">
+        <mpc-list [data]="data" [columns]="columns" [header]="true"></mpc-list>
+        <mpc-board-footer [paginator]="paginator" (mpePageEvent)="setDataOfPageIndex($event)"></mpc-board-footer>
+      </div>
       <div class="wrapBtn">
       <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
       </div>
@@ -14,7 +15,10 @@
   <section>
     <article>
       <h4>2. Table & Paginator</h4>
-      <mpc-table [tblData]="tblData" [tblColumns]="tblColumns" [tblPipe]="tblPipe"></mpc-table>
+      <mpc-table [tblData]="tblData" [tblPageSize]="tblPageSize"
+                [tblColumns]="tblColumns" [tblPipe]="tblPipe"
+                [tblFooter]="tblFooter">
+      </mpc-table>
     </article>
   </section>
 </div>

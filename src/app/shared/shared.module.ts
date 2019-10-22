@@ -111,7 +111,8 @@ import { TableComponent } from './table/table.component';
     SuccessDialogComponent,
     ListComponent,
     TableComponent,
-    BoardFooterComponent
+    BoardFooterComponent,
+    DataFormatPipe
   ],
   entryComponents: [
     SuccessDialogComponent
