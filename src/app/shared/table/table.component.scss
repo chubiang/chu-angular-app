@@ -1,8 +1,18 @@
 @import '../../style-variabel.scss';
 
+.table {
+  width: 600px;
+  overflow-x: auto;
+}
+
+table {
+  width: 900px;
+}
+/*
 .mat-table {
   width: 100%;
 }
+*/
 
 .mat-header-cell {
   text-align: center;
@@ -20,4 +30,10 @@
 
 .mat-column-select {
   overflow: initial;
+}
+
+.mat-table-sticy {
+  left: 90px;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
 }

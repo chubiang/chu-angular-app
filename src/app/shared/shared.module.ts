@@ -1,3 +1,4 @@
+import { TblStickyDirective } from './table/tbl-sticky.directive';
 import { DataFormatPipe } from './data-format.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -56,7 +57,8 @@ import { TableComponent } from './table/table.component';
     ListComponent,
     TableComponent,
     BoardFooterComponent,
-    DataFormatPipe
+    DataFormatPipe,
+    TblStickyDirective
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,8 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "camelCase",
+      "mpd"
     ],
     "component-selector": [
       true,
@@ -85,7 +86,8 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "no-string-literal": false
   },
   "rulesDirectory": [
     "codelyzer"

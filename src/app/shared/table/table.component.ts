@@ -2,8 +2,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DataFormatPipe } from './../data-format.pipe';
 import { isNumeric } from 'rxjs/util/isNumeric';
 import { TableColumn, TableFooterColumn, DataFormatPipeModel } from './../data-format.model';
-import { TableService } from './shared/table.service';
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -12,25 +11,27 @@ import { SelectionModel } from '@angular/cdk/collections';
   selector: 'mpc-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  providers: [TableService, DataFormatPipe]
+  providers: [DataFormatPipe]
 })
 export class TableComponent implements OnInit {
 
   @Input() tblData: Array<any>;
   @Input() tblColumns: string[];
-  @Input() tblPipe: Array<TableColumn>;
+  @Input() tblColAttribute: Array<TableColumn>;
   @Input() tblFooter: Array<TableFooterColumn>;
   @Input() tblSelect: boolean;
   @Input() tblPageSize: number[];
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) matPaginator: MatPaginator;
-
-  selection = new SelectionModel<any>(true, []);
-  tableService: TableService;
-  dataFormatPipe: DataFormatPipe;
+  // custom
+  @ViewChildren('tblRow') tblRow: QueryList<ElementRef>;
 
   dataSource = new MatTableDataSource<any>();
+  selection = new SelectionModel<any>(true, []);
+  dataFormatPipe: DataFormatPipe;
+  stickyRows: object = {};
+  selectBoxWidth = '50';
 
   @Output() mpeDataSource: EventEmitter<MatTableDataSource<any>> =
     new EventEmitter<MatTableDataSource<any>>();
@@ -38,6 +39,7 @@ export class TableComponent implements OnInit {
   // TODO: 선택한 값 무엇인지 내보내기
   @Output() mpeSelectedRows: EventEmitter<SelectionModel<any>> =
     new EventEmitter<SelectionModel<any>>();
+
 
 
   isAllSelected() {
@@ -86,8 +88,7 @@ export class TableComponent implements OnInit {
     return;
   }
 
-  constructor(tableService: TableService, dataFormatPipe: DataFormatPipe) {
-    this.tableService = tableService;
+  constructor(dataFormatPipe: DataFormatPipe) {
     this.dataFormatPipe = dataFormatPipe;
   }
 
@@ -95,8 +96,29 @@ export class TableComponent implements OnInit {
     // select 활성화 시에
     if (this.tblSelect) {
       this.tblColumns.unshift('select');
-      this.tblPipe.unshift({name: 'select'});
+      this.tblColAttribute.unshift({ name: 'select' });
     }
+    // sticky 활성화 시에
+    this.tblColAttribute.map((v, i, arr) => {
+      let fw: string;
+      if (v.sticky) {
+        if (this.tblSelect && !this.stickyRows['select']) {
+          this.tblColAttribute[0].sticky = true;
+          Object.assign(this.stickyRows, {select: { sticky: true, width: this.selectBoxWidth, frontWidth: '0' }});
+        }
+        if (this.tblSelect && i === 1) { fw = '75'; }
+        if (!this.tblSelect && i > 0 ) { fw = arr[i - 1]['width']; }
+
+        this.stickyRows[v.name] = {
+          sticky: v.sticky,
+          width: v.width,
+          frontWidth: fw
+        };
+      }
+    });
+    console.log(this.stickyRows);
+
+
     this.mpeDataSource.emit(this.dataSource);
     this.dataSource.data = this.tblData;
     this.dataSource.paginator = this.matPaginator;

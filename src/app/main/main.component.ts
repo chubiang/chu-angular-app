@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
     // table
   tblData: Array<any>;
   tblColumns: string[];
-  tblPipe: Array<TableColumn>;
+  tblColAttribute: Array<TableColumn>;
   tblFooter: Array<TableFooterColumn>;
   tblPageSize: number[];
   dataSource: MatTableDataSource<any>;
@@ -75,7 +75,7 @@ export class MainComponent implements OnInit {
     this.tblData = MOCK_LIST_DATA;
     this.tblFooter = MOCK_TABLE_COLUMN_FOOTER;
     this.tblColumns = MOCK_TABLE_COLUMN;
-    this.tblPipe = MOCK_TABLE_COLUMN_PIPE;
+    this.tblColAttribute = MOCK_TABLE_COLUMN_PIPE;
     this.tblPageSize = [5, 10, 20, 100];
     this.paginator = {
       pageIndex: 0,

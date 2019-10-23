@@ -12,6 +12,8 @@ export class DataFormatPipeModel {
 
 export interface TableColumn {
   name: string;
+  sticky?: boolean;
+  width?: string;
   displayName?: string;
   pipe?: DataFormatPipeModel;
 }

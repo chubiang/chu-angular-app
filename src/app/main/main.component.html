@@ -16,7 +16,7 @@
     <article>
       <h4>2. Table & Paginator</h4>
       <mpc-table [tblData]="tblData" [tblPageSize]="tblPageSize"
-                [tblColumns]="tblColumns" [tblPipe]="tblPipe"
+                [tblColumns]="tblColumns" [tblColAttribute]="tblColAttribute"
                 [tblFooter]="tblFooter" [tblSelect]="true"
                 (mpeDataSource)="getTableDataSource($event)"
                 (mpeSelectedRows)="getTableSelection($event)">
