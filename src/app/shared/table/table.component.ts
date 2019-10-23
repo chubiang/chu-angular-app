@@ -36,7 +36,8 @@ export class TableComponent implements OnInit {
     new EventEmitter<MatTableDataSource<any>>();
 
   // TODO: 선택한 값 무엇인지 내보내기
-  @Output() mpeSelectedRows: EventEmitter<any>;
+  @Output() mpeSelectedRows: EventEmitter<SelectionModel<any>> =
+    new EventEmitter<SelectionModel<any>>();
 
 
   isAllSelected() {
@@ -49,6 +50,10 @@ export class TableComponent implements OnInit {
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  putSelectionRow() {
+    this.mpeSelectedRows.emit(this.selection);
   }
 
   checkboxLabel(row?: any): string {

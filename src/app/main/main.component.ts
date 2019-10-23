@@ -7,6 +7,7 @@ import { Paginator, DEF_PAGE_SIZE, DEF_PAGE_SIZE_OPTIONS } from './../shared/boa
 import { MOCK_LIST_DATA, MOCK_LIST_COLUMN, MOCK_TABLE_COLUMN, MOCK_TABLE_COLUMN_PIPE, MOCK_TABLE_COLUMN_FOOTER } from './shared/mock-list';
 import { Column } from '../shared/list/shared/list.model';
 import { Component, OnInit } from '@angular/core';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'page-main',
@@ -26,6 +27,7 @@ export class MainComponent implements OnInit {
   tblFooter: Array<TableFooterColumn>;
   tblPageSize: number[];
   dataSource: MatTableDataSource<any>;
+  selection: SelectionModel<any>;
 
   paginator: Paginator;
   listService: ListService;
@@ -58,10 +60,13 @@ export class MainComponent implements OnInit {
       }
     });
   }
-
+  // 테이블 페이징 정보 추출용
   getTableDataSource(dataSource: MatTableDataSource<any>) {
     this.dataSource = dataSource;
-
+  }
+  // 선택한 row 추출용
+  getTableSelection(selection: SelectionModel<any>) {
+    this.selection = selection;
   }
 
   ngOnInit() {

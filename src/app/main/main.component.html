@@ -18,7 +18,8 @@
       <mpc-table [tblData]="tblData" [tblPageSize]="tblPageSize"
                 [tblColumns]="tblColumns" [tblPipe]="tblPipe"
                 [tblFooter]="tblFooter" [tblSelect]="true"
-                (mpeDataSource)="getTableDataSource($event)">
+                (mpeDataSource)="getTableDataSource($event)"
+                (mpeSelectedRows)="getTableSelection($event)">
       </mpc-table>
     </article>
   </section>
