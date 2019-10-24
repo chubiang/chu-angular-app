@@ -1,18 +1,13 @@
 @import '../../style-variabel.scss';
-/*
-.table {
-  width: 600px;
-}
 
-table {
-  width: 900px;
-}
-*/
-.mat-table {
+.table {
   width: 100%;
   overflow-x: auto;
 }
 
+.mat-table {
+  width: 150%;
+}
 
 .mat-header-cell {
   text-align: center;

@@ -32,7 +32,7 @@ export const MOCK_TABLE_COLUMN = [
 
 
 export const MOCK_TABLE_COLUMN_PIPE = [
-  { name: 'username' },
+  { name: 'username', sticky: true },
   { name: 'email' },
   { name: 'age' },
   { name: 'cash', pipe: { type: 'number' } },
