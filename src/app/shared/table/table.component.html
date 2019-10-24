@@ -18,7 +18,7 @@
                         [aria-label]="checkboxLabel(row)">
           </mat-checkbox>
         </td>
-        <td mat-footer-cell *matFooterCellDef></td>
+        <td mat-footer-cell *matFooterCellDef [mpdTblSticky]="stickyRows['select']"></td>
       </ng-container>
     </div>
     <div *ngIf="tblFooter">
@@ -35,25 +35,25 @@
         </ng-container>
       </div>
 
-      <tr mat-header-row *matHeaderRowDef="tblColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: tblColumns;" (click)="selection.toggle(row)"></tr>
+      <tr mat-header-row *matHeaderRowDef="tblColumns" ></tr>
+      <tr mat-row *matRowDef="let row; columns: tblColumns;"[mpdTblListener]="stickyRows"  (click)="selection.toggle(row)"></tr>
       <tr mat-footer-row *matFooterRowDef="tblColumns"></tr>
     </div>
     <!--footer없을 때-->
     <div *ngIf="!tblFooter">
       <div *ngFor="let col of tblColumns; let i = index;">
         <ng-container matColumnDef="{{ col }}" *ngIf="!tblColAttribute[i]['pipe'] && col !== 'select'" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col.toUpperCase() }} </th>
-          <td mat-cell *matCellDef="let element"> {{ element[col] }} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [mpdTblSticky]="stickyRows[col]"> {{ col.toUpperCase() }} </th>
+          <td mat-cell *matCellDef="let element" [mpdTblSticky]="stickyRows[col]"> {{ element[col] }} </td>
         </ng-container>
         <ng-container matColumnDef="{{ col }}" *ngIf="tblColAttribute[i]['pipe'] && col !== 'select'" >
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ col.toUpperCase() }} </th>
-          <td mat-cell *matCellDef="let element"> {{ element[col] | dataFormatPipe:tblColAttribute[i]['pipe'] }} </td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header [mpdTblSticky]="stickyRows[col]"> {{ col.toUpperCase() }} </th>
+          <td mat-cell *matCellDef="let element" [mpdTblSticky]="stickyRows[col]"> {{ element[col] | dataFormatPipe:tblColAttribute[i]['pipe'] }} </td>
         </ng-container>
       </div>
 
       <tr mat-header-row *matHeaderRowDef="tblColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: tblColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: tblColumns;" [mpdTblListener]="stickyRows"></tr>
     </div>
   </table>
 

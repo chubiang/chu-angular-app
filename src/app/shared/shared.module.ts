@@ -1,3 +1,4 @@
+import { TblListenerDirective } from './table/tbl-listener.directive';
 import { TblStickyDirective } from './table/tbl-sticky.directive';
 import { DataFormatPipe } from './data-format.pipe';
 import { NgModule } from '@angular/core';
@@ -58,7 +59,8 @@ import { TableComponent } from './table/table.component';
     TableComponent,
     BoardFooterComponent,
     DataFormatPipe,
-    TblStickyDirective
+    TblStickyDirective,
+    TblListenerDirective
   ],
   imports: [
     BrowserModule,
@@ -114,7 +116,7 @@ import { TableComponent } from './table/table.component';
     ListComponent,
     TableComponent,
     BoardFooterComponent,
-    DataFormatPipe
+    DataFormatPipe,
   ],
   entryComponents: [
     SuccessDialogComponent

@@ -1,3 +1,4 @@
+import { TableService } from './table.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { DataFormatPipe } from './../data-format.pipe';
 import { isNumeric } from 'rxjs/util/isNumeric';
@@ -5,13 +6,14 @@ import { TableColumn, TableFooterColumn, DataFormatPipeModel } from './../data-f
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Subscription } from 'rxjs';
 
 
 @Component({
   selector: 'mpc-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  providers: [DataFormatPipe]
+  providers: [DataFormatPipe, TableService]
 })
 export class TableComponent implements OnInit {
 
@@ -30,6 +32,8 @@ export class TableComponent implements OnInit {
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
   dataFormatPipe: DataFormatPipe;
+  tableService: TableService;
+  subscription: Subscription;
   stickyRows: object = {};
   selectBoxWidth = 50;
   firstColLeftPad =  24;
@@ -67,7 +71,7 @@ export class TableComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
-
+  // footer 일때 값 합계 (숫자만 가능!)
   getDataSummary(col: string) {
     let colPipe: TableFooterColumn;
     const filterData = this.tblData.map((v) => {
@@ -91,47 +95,24 @@ export class TableComponent implements OnInit {
     return;
   }
 
-  constructor(dataFormatPipe: DataFormatPipe) {
+  constructor(dataFormatPipe: DataFormatPipe, tableService: TableService) {
     this.dataFormatPipe = dataFormatPipe;
+    this.tableService = tableService;
   }
 
   ngOnInit() {
     // select 활성화 시에
-    if (this.tblSelect) {
+    if (this.tblSelect
+          && !this.tblColAttribute.filter(v => v['name'] === 'select').length) {
       this.tblColumns.unshift('select');
       this.tblColAttribute.unshift({ name: 'select' });
     }
     // sticky 활성화 시에
-    this.tblColAttribute.map((v, i, arr) => {
-      let fw = i === 0 ? 0 : this.firstColLeftPad;
-      if (v.sticky) {
-        if (this.tblSelect) {
-          if (!this.stickyRows['select']) {
-            this.tblColAttribute[0].sticky = true;
-            arr[i - 1]['width'] = this.selectBoxWidth;
-            Object.assign(this.stickyRows, {select: { sticky: true, width: this.selectBoxWidth, frontWidth: 0 }});
-          }
-        }
-        if (i > 0) {
-          if (!arr[i - 1]['width']) {
-            this.stickyRows[arr[i - 1]['name']]['width'] = this.defaultColWidth;
-            arr[i - 1]['width'] = this.defaultColWidth;
-          }
-          for (let index = 0; index < i; index++) {
-            fw += (arr[index]['width'] + this.borderWidth);
-            console.log(v.name, arr[index]['width'], fw, index);
-          }
-        }
-
-        this.stickyRows[v.name] = {
-          sticky: v.sticky,
-          width: v.width,
-          frontWidth: fw
-        };
-      }
-    });
-    console.log(this.stickyRows);
-
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = this.tableService.changeStickyRows(this.tblColAttribute, this.tblSelect)
+                          .subscribe(data => this.stickyRows = data);
 
     this.mpeDataSource.emit(this.dataSource);
     this.dataSource.data = this.tblData;
