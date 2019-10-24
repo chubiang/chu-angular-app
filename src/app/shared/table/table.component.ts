@@ -31,7 +31,10 @@ export class TableComponent implements OnInit {
   selection = new SelectionModel<any>(true, []);
   dataFormatPipe: DataFormatPipe;
   stickyRows: object = {};
-  selectBoxWidth = '50';
+  selectBoxWidth = 50;
+  firstColLeftPad =  24;
+  borderWidth = 1;
+  defaultColWidth = 120;
 
   @Output() mpeDataSource: EventEmitter<MatTableDataSource<any>> =
     new EventEmitter<MatTableDataSource<any>>();
@@ -100,14 +103,25 @@ export class TableComponent implements OnInit {
     }
     // sticky 활성화 시에
     this.tblColAttribute.map((v, i, arr) => {
-      let fw: string;
+      let fw = i === 0 ? 0 : this.firstColLeftPad;
       if (v.sticky) {
-        if (this.tblSelect && !this.stickyRows['select']) {
-          this.tblColAttribute[0].sticky = true;
-          Object.assign(this.stickyRows, {select: { sticky: true, width: this.selectBoxWidth, frontWidth: '0' }});
+        if (this.tblSelect) {
+          if (!this.stickyRows['select']) {
+            this.tblColAttribute[0].sticky = true;
+            arr[i - 1]['width'] = this.selectBoxWidth;
+            Object.assign(this.stickyRows, {select: { sticky: true, width: this.selectBoxWidth, frontWidth: 0 }});
+          }
         }
-        if (this.tblSelect && i === 1) { fw = '75'; }
-        if (!this.tblSelect && i > 0 ) { fw = arr[i - 1]['width']; }
+        if (i > 0) {
+          if (!arr[i - 1]['width']) {
+            this.stickyRows[arr[i - 1]['name']]['width'] = this.defaultColWidth;
+            arr[i - 1]['width'] = this.defaultColWidth;
+          }
+          for (let index = 0; index < i; index++) {
+            fw += (arr[index]['width'] + this.borderWidth);
+            console.log(v.name, arr[index]['width'], fw, index);
+          }
+        }
 
         this.stickyRows[v.name] = {
           sticky: v.sticky,

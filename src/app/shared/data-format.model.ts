@@ -13,7 +13,7 @@ export class DataFormatPipeModel {
 export interface TableColumn {
   name: string;
   sticky?: boolean;
-  width?: string;
+  width?: number;
   displayName?: string;
   pipe?: DataFormatPipeModel;
 }

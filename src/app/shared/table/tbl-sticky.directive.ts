@@ -19,9 +19,9 @@ export class TblStickyDirective implements OnInit{
       this.renderer.setStyle(this.el.nativeElement, 'position', 'sticky');
       this.renderer.setStyle(this.el.nativeElement, 'border-right', '1px solid #e0e0e0');
       this.renderer.setStyle(this.el.nativeElement, 'z-index', '1');
+      this.renderer.setStyle(this.el.nativeElement, 'min-width', (this.mpdTblSticky['width']) + 'px');
       this.renderer.setStyle(this.el.nativeElement, 'width', (this.mpdTblSticky['width']) + 'px');
 
-      console.log(uniqueClass[0], this.mpdTblSticky['frontWidth']);
       this.renderer.setStyle(this.el.nativeElement, 'left', this.mpdTblSticky['frontWidth'] + 'px');
       if (this.el.nativeElement.nodeName !== 'TH') {
         this.renderer.setStyle(this.el.nativeElement, 'background-color', '#ffffff');
