@@ -10,12 +10,12 @@ import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
-  selector: 'page-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
+  selector: 'page-paginator',
+  templateUrl: './paginator.component.html',
+  styleUrls: ['./paginator.component.scss'],
   providers: [PaginatorService]
 })
-export class MainComponent implements OnInit {
+export class PaginatorComponent implements OnInit {
   // list
   data: Array<any>;
   original: Array<any>;

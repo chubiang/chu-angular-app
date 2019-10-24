@@ -48,7 +48,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { SharedModule } from './shared/shared.module';
@@ -58,7 +58,7 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
+    PaginatorComponent,
     LoginComponent,
     NavbarComponent,
     FooterComponent,

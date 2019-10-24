@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 
 
 export const Menus: Array<Menu> = [{ title: 'Sign In', herf: 'login' },
-                        { title: 'Main', herf: 'main' }];
+                        { title: 'Paginator', herf: 'paginator' }];
 
 @Component({
   selector: 'mpc-navbar',
