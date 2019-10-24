@@ -6,27 +6,33 @@
     <mpc-navbar (mpeMenuTitle)="changeTitle($event)"></mpc-navbar>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="wrap-nav">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="sidenav.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>chu-angular-app</span>
-    </mat-toolbar>
-    <span class="subTitle">{{menuTitle}}</span>
     <!--view-->
-    <main class="wrap-container">
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-    <!--view footer-->
-    <footer>
-      <mpc-footer></mpc-footer>
-    </footer>
+    <div class="wrap-content">
+      <header class="content-header">
+        <mat-toolbar class="wrap-nav">
+          <button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="sidenav.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          <span>chu-angular-app</span>
+        </mat-toolbar>
+      </header>
+      <main class="wrap-container">
+        <div class="container-title">
+          <span class="subTitle">{{menuTitle}}</span>
+        </div>
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+      <!--view footer-->
+      <footer>
+        <mpc-footer class="content-footer"></mpc-footer>
+      </footer>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

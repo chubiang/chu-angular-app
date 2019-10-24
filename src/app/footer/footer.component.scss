@@ -1,0 +1,9 @@
+@import '../style-variabel.scss';
+
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  background: $footer-background-color;
+  color: $sub-font-color;
+  width: 100%;
+}

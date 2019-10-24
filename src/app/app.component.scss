@@ -19,19 +19,29 @@
     @include mat-elevation(4);
 
 }
+.wrap-content {
+  height: 100%;
 
-.wrap-container {
-  padding: 30px 70px;
-  display: flex;
-  text-align: center;
-  .container {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      margin: 0 auto;
+  .wrap-container {
+    padding: 10px 70px 100px 70px;
+    display: block;
+    text-align: center;
+    .container-title {
+      text-align: left;
+    }
+    .container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0 auto;
+    }
+  }
+  .content-footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 }
-
 .subTitle {
   background-color: $sub-background-color;
   color: $sub-font-color;
