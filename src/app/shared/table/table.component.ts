@@ -43,7 +43,6 @@ export class TableComponent implements OnInit {
   @Output() mpeDataSource: EventEmitter<MatTableDataSource<any>> =
     new EventEmitter<MatTableDataSource<any>>();
 
-  // TODO: 선택한 값 무엇인지 내보내기
   @Output() mpeSelectedRows: EventEmitter<SelectionModel<any>> =
     new EventEmitter<SelectionModel<any>>();
 

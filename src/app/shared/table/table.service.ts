@@ -31,7 +31,6 @@ export class TableService {
           }
           for (let index = 0; index < i; index++) {
             fw += (arr[index]['width'] + this.borderWidth);
-            console.log(v.name, arr[index]['width'], fw, index);
           }
         }
 

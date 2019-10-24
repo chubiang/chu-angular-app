@@ -35,7 +35,6 @@ export class TblListenerDirective implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.el, this.el.nativeElement.offsetParent.childNodes);
     const parentChildNodes = this.el.nativeElement.offsetParent.childNodes;
     if (parentChildNodes) {
       // header용

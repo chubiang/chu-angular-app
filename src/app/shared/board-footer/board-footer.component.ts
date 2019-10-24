@@ -15,7 +15,6 @@ export class BoardFooterComponent implements OnInit {
   @Output() mpePageEvent: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   ngOnInit() {
-    // console.log(this.matPaginator, this.paginator);
     if (!this.paginator) {
       this.paginator.pageSize = DEF_PAGE_SIZE;
       this.paginator.pageSizeOptions = DEF_PAGE_SIZE_OPTIONS;
